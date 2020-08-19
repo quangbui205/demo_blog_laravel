@@ -12,7 +12,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="description" placeholder="Title" value="{{$post -> description}}">
+                    <textarea class="form-control" name="description" rows="5" > {{$post ->description}}</textarea>
                 </div>
             </div>
             <div class="form-group row">

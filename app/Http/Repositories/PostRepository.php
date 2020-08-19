@@ -21,7 +21,7 @@ class PostRepository
 
     public function getDataPaginate()
     {
-        return $this->post->paginate(5);
+        return $this->post->orderBy('created_at','DESC')->paginate(4);
     }
 
     public function save($post)

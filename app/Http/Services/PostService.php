@@ -6,6 +6,7 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\PostRepository;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostService
@@ -22,6 +23,11 @@ class PostService
         return $this->postRepo->getAll();
     }
 
+    public function getDataPaginate()
+    {
+        return $this->postRepo->getDataPaginate();
+    }
+
     public function findById($id)
     {
         return $this->postRepo->findById($id);
@@ -30,10 +36,11 @@ class PostService
     public function store($request)
     {
         $post= new Post();
+        $user = Auth::user();
         $post->title = $request->title;
         $post->description = $request->description;
         $post->category_id = $request->category_id;
-
+        $post->user_id = $user->id;
         if($request->hasFile('image'))
         {
 
